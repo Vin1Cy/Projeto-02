@@ -1,36 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto 01 Git e Github </title>
-    <link rel="stylesheet" href="main.css">
-    <noscript>Voce precisa habilitar o Javascript para visualizar esse website</noscript>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Painel - Login</title>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body class="light-theme">
-    <h1>Site simples, teste de cabeçalho</h1>
+<body class="bg">
+  <main class="auth">
+    <section class="card">
+      <h1 class="title">Painel do Jogo</h1>
+      <p class="subtitle">Acesso restrito. Faça login.</p>
 
-    <p id="msg">Este é um parágrafo de teste para o projeto, itens em lista pontuada.</p>
-    <ul>
-        <li class="list">Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
-        <li class="list">Item 4</li>
-    </ul>
+      <form id="loginForm" class="form">
+        <label class="label">
+          Email
+          <input class="input" type="email" id="email" placeholder="seu@email.com" required />
+        </label>
 
-     <div>
-        <button class="btn">Dark</button>
-    </div>
+        <label class="label">
+          Senha
+          <input class="input" type="password" id="password" placeholder="••••••••" required />
+        </label>
 
-    <p>Este é um parágrafo de teste para o projeto, itens fora de lista.</p>
-    <li>Item 1</li>
-    <li>Item 2</li>
-    <li>Item 3</li>
-    <li>Item 4</li>
+        <button class="btn primary" type="submit" id="loginBtn">Entrar</button>
+        <button class="btn" type="button" id="devLoginBtn">Entrar (DEV)</button>
 
-   
+        <p class="hint" id="msg"></p>
+      </form>
 
+      <footer class="footer">
+        <small>Registro é feito pelo administrador.</small>
+      </footer>
+    </section>
+  </main>
 
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
 </body>
-<script src="app.js"></script>
 </html>
