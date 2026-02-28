@@ -68,7 +68,7 @@ async function viewOverview(){
 
   // endpoints sugeridos:
   // GET /stats/overview -> { online_now, bans_today, sales_today, reports_open }
-  let s = { online_now: 0, bans_today: 0, sales_today: 0, reports_open: 0 };
+  let s = { online_now: 12, bans_today: 0, sales_today: 0, reports_open: 0 };
   try { s = await apiFetch("/stats/overview"); } catch {}
 
   const html = `
@@ -266,4 +266,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   document.getElementById("refreshBtn").addEventListener("click", renderRoute);
   await renderRoute();
+
+    // Auto refresh: atualiza a Visão geral a cada 5 segundos
+  setInterval(() => {
+    // se você estiver usando renderRoute/Hash, deixa assim:
+    renderRoute();
+  }, 3000);
 });

@@ -2,19 +2,31 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
-DATABASE_URL = "sqlite:///./app.db"
+# DB 1: Auth/Login
+APP_DB_URL = "sqlite:///./app.db"
 
-engine = create_engine(
-    DATABASE_URL,
-    connect_args={"check_same_thread": False}  # necessário no SQLite
-)
+# DB 2: Dashboard/Stats
+DASHBOARD_DB_URL = "sqlite:///./dashboard.db"
 
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-Base = declarative_base()
+app_engine = create_engine(APP_DB_URL, connect_args={"check_same_thread": False})
+dashboard_engine = create_engine(DASHBOARD_DB_URL, connect_args={"check_same_thread": False})
 
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+AppSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=app_engine)
+DashboardSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=dashboard_engine)
+
+BaseApp = declarative_base()
+BaseDash = declarative_base()
+
+def get_app_db():
+  db = AppSessionLocal()
+  try:
+    yield db
+  finally:
+    db.close()
+
+def get_dashboard_db():
+  db = DashboardSessionLocal()
+  try:
+    yield db
+  finally:
+    db.close()
