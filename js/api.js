@@ -1,5 +1,5 @@
 // js/api.js
-const API_BASE = "https://SEU-DOMINIO-DA-API.com"; // <-- troque isso
+const API_BASE = "http://localhost:8000"; // <-- troque isso
 
 function getToken() {
   return localStorage.getItem("access_token");
