@@ -1,8 +1,8 @@
 // js/dashboard.js
 const VIEWS = [
   { id:"overview",  label:"Visão geral",  icon:"📊", roles:["owner","admin","mod","player"] },
-  /*{ id:"players",   label:"Players",      icon:"👤", roles:["owner","admin","mod"] },
-  { id:"moderation",label:"Moderação",    icon:"🛡️", roles:["owner","admin","mod"] },
+  { id:"players",   label:"Players",      icon:"👤", roles:["owner","admin","mod"] },
+  /*{ id:"moderation",label:"Moderação",    icon:"🛡️", roles:["owner","admin","mod"] },
   { id:"economy",   label:"Economia",     icon:"💰", roles:["owner","admin"] },
   { id:"settings",  label:"Configurações",icon:"⚙️", roles:["owner"] },*/
 ];
@@ -83,7 +83,7 @@ async function viewOverview(){
   document.getElementById("view").innerHTML = html;
 }
 
-/*async function viewPlayers(){
+async function viewPlayers(){
   setHeader("Players", "Consultar e gerenciar players.");
 
   // GET /players?search=... -> [{ userId, name, lastSeen, status }]
@@ -116,7 +116,7 @@ async function viewOverview(){
   });
 }
 
-async function viewEconomy(){
+/*async function viewEconomy(){
   setHeader("Economia", "Acompanhar transações e ajustar configurações.");
 
   // GET /economy/summary -> { revenue_7d, top_item, refunds }
@@ -216,8 +216,8 @@ async function viewSettings(){
 // --------- Router ---------
 const ROUTES = {
   overview: viewOverview,
-  /*players: viewPlayers,
-  economy: viewEconomy,
+  players: viewPlayers,
+  /*economy: viewEconomy,
   moderation: viewModeration,
   settings: viewSettings,*/
 };
