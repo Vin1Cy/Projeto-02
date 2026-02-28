@@ -1,10 +1,10 @@
 // js/dashboard.js
 const VIEWS = [
   { id:"overview",  label:"Visão geral",  icon:"📊", roles:["owner","admin","mod","player"] },
-  { id:"players",   label:"Players",      icon:"👤", roles:["owner","admin","mod"] },
+  /*{ id:"players",   label:"Players",      icon:"👤", roles:["owner","admin","mod"] },
   { id:"moderation",label:"Moderação",    icon:"🛡️", roles:["owner","admin","mod"] },
   { id:"economy",   label:"Economia",     icon:"💰", roles:["owner","admin"] },
-  { id:"settings",  label:"Configurações",icon:"⚙️", roles:["owner"] },
+  { id:"settings",  label:"Configurações",icon:"⚙️", roles:["owner"] },*/
 ];
 
 function role() {
@@ -76,15 +76,14 @@ async function viewOverview(){
     ${tile("Bans hoje", s.bans_today)}
     ${tile("Vendas hoje", s.sales_today)}
     ${tile("Reports abertos", s.reports_open)}
-    ${table("Últimos eventos", ["Quando","Tipo","Player","Detalhe"], [
-      ["—","—","—","—"],
-      ["—","—","—","—"],
+    ${table("Últimos eventos", ["Quando","Tipo","User","Detalhe", "Antes", "Depois"], [
+      ["—","—","—","—","-—","—"],
     ])}
   `;
   document.getElementById("view").innerHTML = html;
 }
 
-async function viewPlayers(){
+/*async function viewPlayers(){
   setHeader("Players", "Consultar e gerenciar players.");
 
   // GET /players?search=... -> [{ userId, name, lastSeen, status }]
@@ -145,7 +144,6 @@ async function viewModeration(){
         <input class="input" id="modUserId" placeholder="UserId" style="max-width:180px;">
         <select class="input" id="modAction" style="max-width:200px;">
           <option value="warn">Warn</option>
-          <option value="mute">Mute</option>
           <option value="ban">Ban</option>
         </select>
         <input class="input" id="modReason" placeholder="Motivo" style="max-width:320px;">
@@ -154,7 +152,8 @@ async function viewModeration(){
       <p class="muted" style="margin-top:10px;">O backend deve validar permissão (role) e registrar no audit log.</p>
       <p class="hint" id="modMsg"></p>
     </article>
-    ${table("Audit Log (exemplo)", ["Quando","Staff","Ação","Player","Motivo"], [
+    ${table("Audit Log", ["Quando","Staff","Ação","Player","Motivo"], [
+      ["—","—","—","—","—"],
       ["—","—","—","—","—"]
     ])}
   `;
@@ -192,7 +191,8 @@ async function viewSettings(){
       <p class="hint" id="cfgMsg"></p>
     </article>
     ${table("Audit Log (exemplo)", ["Tipo","Valor","User","Data","Motivo"], [
-      ["—","—","—","—","—"]
+      ["—","—","—","—","—"],
+      ["xp",id="cfgValue","—","—","—"]
     ])}
   `;
   document.getElementById("view").innerHTML = html;
@@ -211,15 +211,15 @@ async function viewSettings(){
       msg.textContent = err.message;
     }
   });
-}
+}*/
 
 // --------- Router ---------
 const ROUTES = {
   overview: viewOverview,
-  players: viewPlayers,
+  /*players: viewPlayers,
   economy: viewEconomy,
   moderation: viewModeration,
-  settings: viewSettings,
+  settings: viewSettings,*/
 };
 
 async function renderRoute() {
@@ -235,6 +235,16 @@ async function renderRoute() {
 
 document.addEventListener("DOMContentLoaded", async () => {
   requireAuth();
+
+  /*
+  // carrega usuário/role se ainda não tiver salvo
+  try {
+    const me = await loadMe();
+    document.getElementById("whoami").textContent = `${me.email} • ${me.role}`;
+  } catch {
+    document.getElementById("whoami").textContent = `${localStorage.getItem("user_email") || ""} • ${role()}`;
+  }
+  */
 
   // carrega usuário/role se ainda não tiver salvo
   try {

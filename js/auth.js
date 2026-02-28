@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Botão de login fake para desenvolvimento
     const devBtn = document.getElementById("devLoginBtn");
   if (devBtn) {
     devBtn.addEventListener("click", () => {
