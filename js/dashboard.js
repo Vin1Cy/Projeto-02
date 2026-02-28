@@ -77,7 +77,7 @@ async function viewOverview(){
     ${tile("Vendas hoje", s.sales_today)}
     ${tile("Reports abertos", s.reports_open)}
     ${table("Últimos eventos", ["Quando","Tipo","User","Detalhe", "Antes", "Depois"], [
-      ["—","—","—","—","-—","—"],
+      ["28/02/2026 - 03:26","xp_multiplier","ViniCy","evento","1","1.5"],
     ])}
   `;
   document.getElementById("view").innerHTML = html;
