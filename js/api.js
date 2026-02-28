@@ -17,7 +17,7 @@ async function apiFetch(path, { method="GET", body=null, headers={} } = {}) {
     // Modo DEV
     if (getToken() === "DEV_TOKEN") {
         // Retornos fake por endpoint (mock)
-        if (path === "/stats/overview") return { online_now: 12, bans_today: 1, sales_today: 5, reports_open: 2 };
+        if (path === "/stats/overview") return { online_now: 0, bans_today: 0, sales_today: 0, reports_open: 0 };
         /*if (path.startsWith("/players")) return [{ userId: 123, name: "PlayerTeste", lastSeen: "Hoje", status: "OK" }];
         if (path === "/economy/summary") return { revenue_7d: 999, top_item: "VIP", refunds: 0 };
         if (path === "/me") return { email: "dev@local", role: role() };*/
