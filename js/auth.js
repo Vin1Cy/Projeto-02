@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  /*
   // Botão de login fake para desenvolvimento
     const devBtn = document.getElementById("devLoginBtn");
   if (devBtn) {
@@ -53,11 +54,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Defina o role que você quer testar:
       localStorage.setItem("user_role", "owner"); // owner/admin/mod/player
-      localStorage.setItem("user_email", "dev@local");
+
 
       window.location.href = "dashboard.html";
     });
   }
+  */
 
   if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {

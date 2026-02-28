@@ -68,7 +68,7 @@ async function viewOverview(){
 
   // endpoints sugeridos:
   // GET /stats/overview -> { online_now, bans_today, sales_today, reports_open }
-  let s = { online_now: 12, bans_today: 0, sales_today: 0, reports_open: 0 };
+  let s = { online_now: 0, bans_today: 0, sales_today: 0, reports_open: 0 };
   try { s = await apiFetch("/stats/overview"); } catch {}
 
   const html = `
@@ -236,7 +236,7 @@ async function renderRoute() {
 document.addEventListener("DOMContentLoaded", async () => {
   requireAuth();
 
-  /*
+  
   // carrega usuário/role se ainda não tiver salvo
   try {
     const me = await loadMe();
@@ -244,10 +244,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   } catch {
     document.getElementById("whoami").textContent = `${localStorage.getItem("user_email") || ""} • ${role()}`;
   }
-  */
+  
 
   // carrega usuário/role se ainda não tiver salvo
-  try {
+  /*try {
   if (getToken() !== "DEV_TOKEN") {
     const me = await loadMe();
     document.getElementById("whoami").textContent =
@@ -259,12 +259,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 } catch {
   document.getElementById("whoami").textContent =
     `${localStorage.getItem("user_email") || ""} • ${role()}`;
-}
+}*/
 
   renderNav();
   window.addEventListener("hashchange", renderRoute);
 
-  document.getElementById("refreshBtn").addEventListener("click", renderRoute);
   await renderRoute();
 
     // Auto refresh: atualiza a Visão geral a cada 5 segundos
