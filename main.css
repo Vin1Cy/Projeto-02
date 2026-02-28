@@ -1,0 +1,70 @@
+:root {
+
+--black: #000000;
+--white: #FFFFFF;
+--blue: #0078d4;
+--red: #ff0000;
+
+}
+
+body {
+
+font-family: monospace;
+
+}
+
+ul {
+
+font-family: helvética;
+
+}
+
+li {
+
+list-style: circle;
+
+}
+
+.list {
+
+list-style: square;
+color: var(--red);
+
+}
+
+#msg {
+
+font-family: monospace;
+color: var(--blue);
+
+}
+
+.light-theme {
+
+color: var(--black);
+background: var(--white);
+
+}
+
+.dark-theme {
+
+color: var(--white);
+background: var(--black);
+
+
+}
+
+.btn {
+
+	position: absolute;
+	top: 25px;
+	right: 25px;
+	height: 25px;
+	width: 100px;
+	border-radius: 8%;
+	border: none;
+
+	color: var(--white);
+	background: var(--blue);
+
+}
